@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for (( i=1; i<=4; i++ ))
+do
+	touch $i.sh
+	chmod 764 $i.sh
+	echo "#!/bin/bash" > $i.sh
+done
