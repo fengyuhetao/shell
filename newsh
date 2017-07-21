@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#创建10个sh
+#创建4个sh
 
 for (( i=1; i<=4; i++))
 do
