@@ -1,6 +1,11 @@
 #!/bin/bash
 #使用内建变量
 
+# NF 当前记录的字段个数
+# NR 到目前为止读的记录数量
+#下面的程序在每行开头输出行号，并在最后输出文件的总字段数
+gawk '{ total+=NF; print NR, $0 }END{ print "Total: ", total}'
+
 gawk 'BEGIN {testing="This is a test";  print testing; testing=45;  print testing}'
 
 #处理数字值
