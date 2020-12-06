@@ -10,7 +10,7 @@ do
 	echo $check
 	for item in $check
 	do
-		count=$[ $count + 1 ]
+		count=$(( $count + 1 ))
 	done
 	echo "$directory - $count"
 	count=0
