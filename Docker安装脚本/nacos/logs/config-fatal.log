@@ -1,0 +1,16 @@
+2024-04-25 17:04:35,047 WARN [master-db] jdbc:mysql://192.168.80.130:3306/lamp_nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
+
+2024-04-25 17:04:39,570 WARN isQuickStart:false
+
+2024-04-25 17:25:06,945 WARN [master-db] jdbc:mysql://192.168.80.130:3306/lamp_nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
+
+2024-04-25 17:25:07,214 WARN isQuickStart:false
+
+2024-04-25 17:51:37,622 WARN [master-db] jdbc:mysql://192.168.80.130:3306/lamp_nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
+
+2024-04-25 17:51:37,883 WARN isQuickStart:false
+
+2024-04-25 17:54:36,300 WARN [master-db] jdbc:mysql://192.168.80.130:3306/lamp_nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false
+
+2024-04-25 17:54:36,563 WARN isQuickStart:false
+

@@ -1,0 +1,132 @@
+2024-04-25 17:04:27,107 INFO notifyConnectTimeout:200
+
+2024-04-25 17:04:27,109 INFO notifySocketTimeout:8000
+
+2024-04-25 17:04:27,110 INFO isHealthCheck:true
+
+2024-04-25 17:04:27,110 INFO maxHealthCheckFailCount:12
+
+2024-04-25 17:04:27,110 INFO maxContent:10485760
+
+2024-04-25 17:04:27,141 INFO spring.datasource.platform:mysql
+
+2024-04-25 17:04:39,569 WARN DumpService start
+
+2024-04-25 17:04:39,570 INFO start clear all config-info.
+
+2024-04-25 17:04:39,571 WARN clear all config-info failed.
+
+2024-04-25 17:04:39,571 WARN clear all config-info-tenant failed.
+
+2024-04-25 17:04:39,658 INFO start clear all config-info-beta.
+
+2024-04-25 17:04:39,658 WARN clear all config-info-beta failed.
+
+2024-04-25 17:04:39,658 WARN clear all config-info-beta-tenant failed.
+
+2024-04-25 17:04:39,673 INFO start clear all config-info-tag.
+
+2024-04-25 17:04:39,674 WARN clear all config-info-tag failed.
+
+2024-04-25 17:04:39,674 WARN clear all config-info-tag-tenant failed.
+
+2024-04-25 17:24:58,592 INFO notifyConnectTimeout:200
+
+2024-04-25 17:24:58,594 INFO notifySocketTimeout:8000
+
+2024-04-25 17:24:58,594 INFO isHealthCheck:true
+
+2024-04-25 17:24:58,595 INFO maxHealthCheckFailCount:12
+
+2024-04-25 17:24:58,595 INFO maxContent:10485760
+
+2024-04-25 17:24:58,595 INFO spring.datasource.platform:mysql
+
+2024-04-25 17:25:07,213 WARN DumpService start
+
+2024-04-25 17:25:07,214 INFO start clear all config-info.
+
+2024-04-25 17:25:07,215 WARN clear all config-info failed.
+
+2024-04-25 17:25:07,215 WARN clear all config-info-tenant failed.
+
+2024-04-25 17:25:07,251 INFO start clear all config-info-beta.
+
+2024-04-25 17:25:07,251 WARN clear all config-info-beta failed.
+
+2024-04-25 17:25:07,251 WARN clear all config-info-beta-tenant failed.
+
+2024-04-25 17:25:07,262 INFO start clear all config-info-tag.
+
+2024-04-25 17:25:07,262 WARN clear all config-info-tag failed.
+
+2024-04-25 17:25:07,263 WARN clear all config-info-tag-tenant failed.
+
+2024-04-25 17:51:28,852 INFO notifyConnectTimeout:200
+
+2024-04-25 17:51:28,864 INFO notifySocketTimeout:8000
+
+2024-04-25 17:51:28,864 INFO isHealthCheck:true
+
+2024-04-25 17:51:28,865 INFO maxHealthCheckFailCount:12
+
+2024-04-25 17:51:28,865 INFO maxContent:10485760
+
+2024-04-25 17:51:28,865 INFO spring.datasource.platform:mysql
+
+2024-04-25 17:51:37,882 WARN DumpService start
+
+2024-04-25 17:51:37,883 INFO start clear all config-info.
+
+2024-04-25 17:51:37,907 INFO clear all config-info success.
+
+2024-04-25 17:51:37,907 WARN clear all config-info-tenant failed.
+
+2024-04-25 17:51:38,047 INFO [all-dump] 12 / 12
+
+2024-04-25 17:51:38,047 INFO start clear all config-info-beta.
+
+2024-04-25 17:51:38,047 WARN clear all config-info-beta failed.
+
+2024-04-25 17:51:38,047 WARN clear all config-info-beta-tenant failed.
+
+2024-04-25 17:51:38,056 INFO start clear all config-info-tag.
+
+2024-04-25 17:51:38,056 WARN clear all config-info-tag failed.
+
+2024-04-25 17:51:38,056 WARN clear all config-info-tag-tenant failed.
+
+2024-04-25 17:54:25,350 INFO notifyConnectTimeout:200
+
+2024-04-25 17:54:25,354 INFO notifySocketTimeout:8000
+
+2024-04-25 17:54:25,354 INFO isHealthCheck:true
+
+2024-04-25 17:54:25,354 INFO maxHealthCheckFailCount:12
+
+2024-04-25 17:54:25,354 INFO maxContent:10485760
+
+2024-04-25 17:54:25,355 INFO spring.datasource.platform:mysql
+
+2024-04-25 17:54:36,562 WARN DumpService start
+
+2024-04-25 17:54:36,563 INFO start clear all config-info.
+
+2024-04-25 17:54:36,600 INFO clear all config-info success.
+
+2024-04-25 17:54:36,601 WARN clear all config-info-tenant failed.
+
+2024-04-25 17:54:36,772 INFO [all-dump] 12 / 12
+
+2024-04-25 17:54:36,772 INFO start clear all config-info-beta.
+
+2024-04-25 17:54:36,772 WARN clear all config-info-beta failed.
+
+2024-04-25 17:54:36,772 WARN clear all config-info-beta-tenant failed.
+
+2024-04-25 17:54:36,780 INFO start clear all config-info-tag.
+
+2024-04-25 17:54:36,780 WARN clear all config-info-tag failed.
+
+2024-04-25 17:54:36,780 WARN clear all config-info-tag-tenant failed.
+

@@ -1,0 +1,80 @@
+2024-04-25 17:04:35,600 INFO raft peers changed: [Member{ip='a6955b479796', port=8848, state=UP, extendInfo={adWeight=0, raftPort=7848, site=unknow, weight=1}}]
+
+2024-04-25 17:04:35,670 INFO initializing Raft sub-system
+
+2024-04-25 17:04:35,670 INFO finish loading all datums, size: 0 cost 0 ms.
+
+2024-04-25 17:04:35,672 INFO cache loaded, datum count: 0, current term: 0
+
+2024-04-25 17:04:35,672 INFO finish to load data from disk, cost: 2 ms.
+
+2024-04-25 17:04:35,681 INFO timer started: leader timeout ms: 15000, heart-beat timeout ms: 5000
+
+2024-04-25 17:04:39,258 INFO add listener: com.alibaba.nacos.naming.domains.meta.00-00---000-NACOS_SWITCH_DOMAIN-000---00-00
+
+2024-04-25 17:04:39,272 INFO add listener: com.alibaba.nacos.naming.domains.meta.
+
+2024-04-25 17:04:40,262 INFO leader timeout, start voting,leader: {"ip":"a6955b479796:8848","term":0,"leaderDueMs":15927,"heartbeatDueMs":4500,"state":"FOLLOWER"}, term: 0
+
+2024-04-25 17:04:56,181 INFO leader timeout, start voting,leader: {"ip":"a6955b479796:8848","voteFor":"a6955b479796:8848","term":1,"leaderDueMs":19230,"heartbeatDueMs":5000,"state":"CANDIDATE"}, term: 1
+
+2024-04-25 17:05:15,675 INFO leader timeout, start voting,leader: {"ip":"a6955b479796:8848","voteFor":"a6955b479796:8848","term":2,"leaderDueMs":16639,"heartbeatDueMs":5000,"state":"CANDIDATE"}, term: 2
+
+2024-04-25 17:05:32,674 INFO leader timeout, start voting,leader: {"ip":"a6955b479796:8848","voteFor":"a6955b479796:8848","term":3,"leaderDueMs":19517,"heartbeatDueMs":5000,"state":"CANDIDATE"}, term: 3
+
+2024-04-25 17:05:52,674 INFO leader timeout, start voting,leader: {"ip":"a6955b479796:8848","voteFor":"a6955b479796:8848","term":4,"leaderDueMs":17346,"heartbeatDueMs":5000,"state":"CANDIDATE"}, term: 4
+
+2024-04-25 17:06:10,174 INFO leader timeout, start voting,leader: {"ip":"a6955b479796:8848","voteFor":"a6955b479796:8848","term":5,"leaderDueMs":19720,"heartbeatDueMs":5000,"state":"CANDIDATE"}, term: 5
+
+2024-04-25 17:06:30,173 INFO leader timeout, start voting,leader: {"ip":"a6955b479796:8848","voteFor":"a6955b479796:8848","term":6,"leaderDueMs":17883,"heartbeatDueMs":5000,"state":"CANDIDATE"}, term: 6
+
+2024-04-25 17:06:48,184 INFO leader timeout, start voting,leader: {"ip":"a6955b479796:8848","voteFor":"a6955b479796:8848","term":7,"leaderDueMs":18309,"heartbeatDueMs":5000,"state":"CANDIDATE"}, term: 7
+
+2024-04-25 17:25:05,492 INFO initializing Raft sub-system
+
+2024-04-25 17:25:05,492 INFO Upgrade from 1X feature has closed, If you want open this feature, please set `nacos.core.support.upgrade.from.1x=true` in application.properties
+
+2024-04-25 17:25:05,691 INFO add listener: com.alibaba.nacos.naming.domains.meta.
+
+2024-04-25 17:25:06,996 INFO add listener: com.alibaba.nacos.naming.domains.meta.00-00---000-NACOS_SWITCH_DOMAIN-000---00-00
+
+2024-04-25 17:25:10,478 WARN start to close old raft protocol!!!
+
+2024-04-25 17:25:10,478 WARN stop old raft protocol task for notifier
+
+2024-04-25 17:25:10,478 WARN clean old cache datum for old raft
+
+2024-04-25 17:25:10,478 WARN start to move old raft protocol metadata
+
+2024-04-25 17:51:36,142 INFO initializing Raft sub-system
+
+2024-04-25 17:51:36,142 INFO Upgrade from 1X feature has closed, If you want open this feature, please set `nacos.core.support.upgrade.from.1x=true` in application.properties
+
+2024-04-25 17:51:36,358 INFO add listener: com.alibaba.nacos.naming.domains.meta.
+
+2024-04-25 17:51:37,663 INFO add listener: com.alibaba.nacos.naming.domains.meta.00-00---000-NACOS_SWITCH_DOMAIN-000---00-00
+
+2024-04-25 17:51:41,114 WARN start to close old raft protocol!!!
+
+2024-04-25 17:51:41,114 WARN stop old raft protocol task for notifier
+
+2024-04-25 17:51:41,114 WARN clean old cache datum for old raft
+
+2024-04-25 17:51:41,114 WARN start to move old raft protocol metadata
+
+2024-04-25 17:54:34,391 INFO initializing Raft sub-system
+
+2024-04-25 17:54:34,391 INFO Upgrade from 1X feature has closed, If you want open this feature, please set `nacos.core.support.upgrade.from.1x=true` in application.properties
+
+2024-04-25 17:54:34,646 INFO add listener: com.alibaba.nacos.naming.domains.meta.
+
+2024-04-25 17:54:36,331 INFO add listener: com.alibaba.nacos.naming.domains.meta.00-00---000-NACOS_SWITCH_DOMAIN-000---00-00
+
+2024-04-25 17:54:39,362 WARN start to close old raft protocol!!!
+
+2024-04-25 17:54:39,362 WARN stop old raft protocol task for notifier
+
+2024-04-25 17:54:39,362 WARN clean old cache datum for old raft
+
+2024-04-25 17:54:39,362 WARN start to move old raft protocol metadata
+

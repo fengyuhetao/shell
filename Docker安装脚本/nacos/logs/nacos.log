@@ -1,0 +1,274 @@
+2024-04-25 17:04:27,157 INFO Starting Nacos v1.4.0 on a6955b479796 with PID 20 (/home/nacos/target/nacos-server.jar started by root in /home/nacos)
+
+2024-04-25 17:04:27,157 INFO The following profiles are active: standalone
+
+2024-04-25 17:04:32,068 INFO Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@352c1b98' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+
+2024-04-25 17:04:32,075 INFO Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+
+2024-04-25 17:04:32,720 INFO Tomcat initialized with port(s): 8848 (http)
+
+2024-04-25 17:04:32,786 INFO Starting service [Tomcat]
+
+2024-04-25 17:04:32,786 INFO Starting Servlet engine: [Apache Tomcat/9.0.38]
+
+2024-04-25 17:04:33,374 INFO At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+
+2024-04-25 17:04:33,458 INFO Initializing Spring embedded WebApplicationContext
+
+2024-04-25 17:04:33,463 INFO Root WebApplicationContext: initialization completed in 6034 ms
+
+2024-04-25 17:04:34,172 INFO HikariPool-1 - Starting...
+
+2024-04-25 17:04:35,027 INFO HikariPool-1 - Start completed.
+
+2024-04-25 17:04:35,482 INFO Nacos-related cluster resource initialization
+
+2024-04-25 17:04:35,499 INFO The cluster resource is initialized
+
+2024-04-25 17:04:38,871 INFO Reflections took 103 ms to scan 1 urls, producing 6 keys and 26 values 
+
+2024-04-25 17:04:38,958 INFO Reflections took 19 ms to scan 1 urls, producing 2 keys and 12 values 
+
+2024-04-25 17:04:38,966 INFO Reflections took 5 ms to scan 1 urls, producing 3 keys and 15 values 
+
+2024-04-25 17:04:40,473 INFO Initializing ExecutorService 'applicationTaskExecutor'
+
+2024-04-25 17:04:40,746 INFO Adding welcome page: class path resource [static/index.html]
+
+2024-04-25 17:04:41,474 INFO Creating filter chain: Ant [pattern='/**'], []
+
+2024-04-25 17:04:41,542 INFO Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@61e3a1fd, org.springframework.security.web.context.SecurityContextPersistenceFilter@5b69fd74, org.springframework.security.web.header.HeaderWriterFilter@11ee02f8, org.springframework.security.web.csrf.CsrfFilter@e041f0c, org.springframework.security.web.authentication.logout.LogoutFilter@271f18d3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@437e951d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7e8e8651, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@51abf713, org.springframework.security.web.session.SessionManagementFilter@61a5b4ae, org.springframework.security.web.access.ExceptionTranslationFilter@11963225]
+
+2024-04-25 17:04:41,783 INFO Initializing ExecutorService 'taskScheduler'
+
+2024-04-25 17:04:41,816 INFO Exposing 2 endpoint(s) beneath base path '/actuator'
+
+2024-04-25 17:04:42,134 INFO Tomcat started on port(s): 8848 (http) with context path '/nacos'
+
+2024-04-25 17:04:42,136 INFO Started Nacos in 17.736 seconds (JVM running for 18.964)
+
+2024-04-25 17:04:42,137 INFO Nacos Log files: /home/nacos/logs
+
+2024-04-25 17:04:42,137 INFO Nacos Log files: /home/nacos/conf
+
+2024-04-25 17:04:42,137 INFO Nacos Log files: /home/nacos/data
+
+2024-04-25 17:04:42,137 INFO Nacos started successfully in stand alone mode. use external storage
+
+2024-04-25 17:04:43,132 INFO Initializing Spring DispatcherServlet 'dispatcherServlet'
+
+2024-04-25 17:04:43,132 INFO Initializing Servlet 'dispatcherServlet'
+
+2024-04-25 17:04:43,160 INFO Completed initialization in 28 ms
+
+2024-04-25 17:24:58,616 INFO Starting Nacos v2.1.1 using Java 1.8.0_342 on 527c83433216 with PID 1 (/home/nacos/target/nacos-server.jar started by root in /home/nacos)
+
+2024-04-25 17:24:58,620 INFO The following 1 profile is active: "standalone"
+
+2024-04-25 17:25:04,322 INFO Tomcat initialized with port(s): 8848 (http)
+
+2024-04-25 17:25:04,331 INFO Starting service [Tomcat]
+
+2024-04-25 17:25:04,331 INFO Starting Servlet engine: [Apache Tomcat/9.0.63]
+
+2024-04-25 17:25:04,490 INFO Initializing Spring embedded WebApplicationContext
+
+2024-04-25 17:25:04,490 INFO Root WebApplicationContext: initialization completed in 5769 ms
+
+2024-04-25 17:25:05,119 INFO Nacos-related cluster resource initialization
+
+2024-04-25 17:25:05,124 INFO Load com.alibaba.nacos.core.ability.RemoteAbilityInitializer for ServerAbilityInitializer
+
+2024-04-25 17:25:05,124 INFO Load com.alibaba.nacos.naming.ability.NamingAbilityInitializer for ServerAbilityInitializer
+
+2024-04-25 17:25:05,137 INFO The cluster resource is initialized
+
+2024-04-25 17:25:05,202 INFO Get Distro config from env, DistroConfig{syncDelayMillis=1000, syncTimeoutMillis=3000, syncRetryDelayMillis=3000, verifyIntervalMillis=5000, verifyTimeoutMillis=3000, loadDataRetryDelayMillis=30000}
+
+2024-04-25 17:25:06,584 INFO HikariPool-1 - Starting...
+
+2024-04-25 17:25:06,912 INFO HikariPool-1 - Start completed.
+
+2024-04-25 17:25:11,319 INFO Adding welcome page: class path resource [static/index.html]
+
+2024-04-25 17:25:12,074 WARN You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+
+2024-04-25 17:25:12,075 INFO Will not secure Ant [pattern='/**']
+
+2024-04-25 17:25:12,136 INFO Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@235f4c10, org.springframework.security.web.context.SecurityContextPersistenceFilter@1d1f7216, org.springframework.security.web.header.HeaderWriterFilter@68759011, org.springframework.security.web.csrf.CsrfFilter@274872f8, org.springframework.security.web.authentication.logout.LogoutFilter@44c79f32, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6e16b8b5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@25ddbbbb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@743cb8e0, org.springframework.security.web.session.SessionManagementFilter@305f031, org.springframework.security.web.access.ExceptionTranslationFilter@319988b0]
+
+2024-04-25 17:25:12,184 INFO Exposing 1 endpoint(s) beneath base path '/actuator'
+
+2024-04-25 17:25:12,436 INFO Tomcat started on port(s): 8848 (http) with context path '/nacos'
+
+2024-04-25 17:25:12,503 INFO Started Nacos in 15.531 seconds (JVM running for 16.605)
+
+2024-04-25 17:25:12,504 INFO Nacos started successfully in stand alone mode. use external storage
+
+2024-04-25 17:25:24,356 INFO Initializing Spring DispatcherServlet 'dispatcherServlet'
+
+2024-04-25 17:25:24,356 INFO Initializing Servlet 'dispatcherServlet'
+
+2024-04-25 17:25:24,388 INFO Completed initialization in 8 ms
+
+2024-04-25 17:35:07,317 WARN clearConfigHistory start
+
+2024-04-25 17:35:07,318 WARN clearConfigHistory, getBeforeStamp:2024-03-26 17:35:07.0, pageSize:1000
+
+2024-04-25 17:35:07,384 INFO [capacityManagement] start correct usage
+
+2024-04-25 17:35:07,389 INFO [capacityManagement] end correct usage, cost: 0.003750884s
+
+2024-04-25 17:45:07,329 WARN clearConfigHistory start
+
+2024-04-25 17:45:07,330 WARN clearConfigHistory, getBeforeStamp:2024-03-26 17:45:07.0, pageSize:1000
+
+2024-04-25 17:45:07,392 INFO [capacityManagement] start correct usage
+
+2024-04-25 17:45:07,397 INFO [capacityManagement] end correct usage, cost: 0.005032864s
+
+2024-04-25 17:50:57,362 WARN [NotifyCenter] Start destroying Publisher
+
+2024-04-25 17:50:57,362 WARN [NotifyCenter] Destruction of the end
+
+2024-04-25 17:50:57,362 WARN [HttpClientBeanHolder] Start destroying common HttpClient
+
+2024-04-25 17:50:57,363 WARN [HttpClientBeanHolder] Destruction of the end
+
+2024-04-25 17:50:57,366 WARN [ConfigServer-HttpClientManager] Start destroying NacosRestTemplate
+
+2024-04-25 17:50:57,368 WARN [ConfigServer-HttpClientManager] Destruction of the end
+
+2024-04-25 17:50:57,368 WARN [WatchFileCenter] start close
+
+2024-04-25 17:50:57,368 WARN [WatchFileCenter] start to shutdown this watcher which is watch : /home/nacos/data/tps
+
+2024-04-25 17:50:57,376 WARN [ThreadPoolManager] Start destroying ThreadPool
+
+2024-04-25 17:50:57,381 WARN [WatchFileCenter] start to shutdown this watcher which is watch : /home/nacos/conf
+
+2024-04-25 17:50:57,381 WARN [WatchFileCenter] start to shutdown this watcher which is watch : /home/nacos/data/loader
+
+2024-04-25 17:50:57,381 WARN [WatchFileCenter] already closed
+
+2024-04-25 17:51:28,888 INFO Starting Nacos v2.1.1 using Java 1.8.0_342 on 527c83433216 with PID 1 (/home/nacos/target/nacos-server.jar started by root in /home/nacos)
+
+2024-04-25 17:51:28,889 INFO The following 1 profile is active: "standalone"
+
+2024-04-25 17:51:34,738 INFO Tomcat initialized with port(s): 8848 (http)
+
+2024-04-25 17:51:34,747 INFO Starting service [Tomcat]
+
+2024-04-25 17:51:34,747 INFO Starting Servlet engine: [Apache Tomcat/9.0.63]
+
+2024-04-25 17:51:34,849 INFO Initializing Spring embedded WebApplicationContext
+
+2024-04-25 17:51:34,849 INFO Root WebApplicationContext: initialization completed in 5866 ms
+
+2024-04-25 17:51:35,688 INFO Nacos-related cluster resource initialization
+
+2024-04-25 17:51:35,703 INFO Load com.alibaba.nacos.core.ability.RemoteAbilityInitializer for ServerAbilityInitializer
+
+2024-04-25 17:51:35,703 INFO Load com.alibaba.nacos.naming.ability.NamingAbilityInitializer for ServerAbilityInitializer
+
+2024-04-25 17:51:35,715 INFO The cluster resource is initialized
+
+2024-04-25 17:51:35,788 INFO Get Distro config from env, DistroConfig{syncDelayMillis=1000, syncTimeoutMillis=3000, syncRetryDelayMillis=3000, verifyIntervalMillis=5000, verifyTimeoutMillis=3000, loadDataRetryDelayMillis=30000}
+
+2024-04-25 17:51:37,275 INFO HikariPool-1 - Starting...
+
+2024-04-25 17:51:37,598 INFO HikariPool-1 - Start completed.
+
+2024-04-25 17:51:43,258 INFO Adding welcome page: class path resource [static/index.html]
+
+2024-04-25 17:51:44,285 WARN You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+
+2024-04-25 17:51:44,286 INFO Will not secure Ant [pattern='/**']
+
+2024-04-25 17:51:44,363 INFO Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@475835b1, org.springframework.security.web.context.SecurityContextPersistenceFilter@c7a975a, org.springframework.security.web.header.HeaderWriterFilter@44c79f32, org.springframework.security.web.csrf.CsrfFilter@305f031, org.springframework.security.web.authentication.logout.LogoutFilter@36b0fcd5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@757d6814, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3c0fae6c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6326d182, org.springframework.security.web.session.SessionManagementFilter@235f4c10, org.springframework.security.web.access.ExceptionTranslationFilter@2a1edad4]
+
+2024-04-25 17:51:44,425 INFO Exposing 1 endpoint(s) beneath base path '/actuator'
+
+2024-04-25 17:51:44,648 INFO Tomcat started on port(s): 8848 (http) with context path '/nacos'
+
+2024-04-25 17:51:44,706 INFO Started Nacos in 17.471 seconds (JVM running for 18.52)
+
+2024-04-25 17:51:44,706 INFO Nacos started successfully in stand alone mode. use external storage
+
+2024-04-25 17:52:52,708 WARN [NotifyCenter] Start destroying Publisher
+
+2024-04-25 17:52:52,709 WARN [NotifyCenter] Destruction of the end
+
+2024-04-25 17:52:52,717 WARN [HttpClientBeanHolder] Start destroying common HttpClient
+
+2024-04-25 17:52:52,717 WARN [HttpClientBeanHolder] Destruction of the end
+
+2024-04-25 17:52:52,717 WARN [ConfigServer-HttpClientManager] Start destroying NacosRestTemplate
+
+2024-04-25 17:52:52,718 WARN [ConfigServer-HttpClientManager] Destruction of the end
+
+2024-04-25 17:52:52,718 WARN [WatchFileCenter] start close
+
+2024-04-25 17:52:52,718 WARN [WatchFileCenter] start to shutdown this watcher which is watch : /home/nacos/data/tps
+
+2024-04-25 17:52:52,718 WARN [WatchFileCenter] start to shutdown this watcher which is watch : /home/nacos/conf
+
+2024-04-25 17:52:52,718 WARN [WatchFileCenter] start to shutdown this watcher which is watch : /home/nacos/data/loader
+
+2024-04-25 17:52:52,718 WARN [WatchFileCenter] already closed
+
+2024-04-25 17:52:52,783 WARN [ThreadPoolManager] Start destroying ThreadPool
+
+2024-04-25 17:54:25,399 INFO Starting Nacos v2.1.1 using Java 1.8.0_342 on 527c83433216 with PID 1 (/home/nacos/target/nacos-server.jar started by root in /home/nacos)
+
+2024-04-25 17:54:25,407 INFO The following 1 profile is active: "standalone"
+
+2024-04-25 17:54:32,710 INFO Tomcat initialized with port(s): 8848 (http)
+
+2024-04-25 17:54:32,729 INFO Starting service [Tomcat]
+
+2024-04-25 17:54:32,729 INFO Starting Servlet engine: [Apache Tomcat/9.0.63]
+
+2024-04-25 17:54:32,820 INFO Initializing Spring embedded WebApplicationContext
+
+2024-04-25 17:54:32,820 INFO Root WebApplicationContext: initialization completed in 7219 ms
+
+2024-04-25 17:54:33,738 INFO Nacos-related cluster resource initialization
+
+2024-04-25 17:54:33,767 INFO Load com.alibaba.nacos.core.ability.RemoteAbilityInitializer for ServerAbilityInitializer
+
+2024-04-25 17:54:33,767 INFO Load com.alibaba.nacos.naming.ability.NamingAbilityInitializer for ServerAbilityInitializer
+
+2024-04-25 17:54:33,794 INFO The cluster resource is initialized
+
+2024-04-25 17:54:33,859 INFO Get Distro config from env, DistroConfig{syncDelayMillis=1000, syncTimeoutMillis=3000, syncRetryDelayMillis=3000, verifyIntervalMillis=5000, verifyTimeoutMillis=3000, loadDataRetryDelayMillis=30000}
+
+2024-04-25 17:54:35,810 INFO HikariPool-1 - Starting...
+
+2024-04-25 17:54:36,268 INFO HikariPool-1 - Start completed.
+
+2024-04-25 17:54:45,271 INFO Adding welcome page: class path resource [static/index.html]
+
+2024-04-25 17:54:46,966 WARN You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+
+2024-04-25 17:54:46,970 INFO Will not secure Ant [pattern='/**']
+
+2024-04-25 17:54:47,093 INFO Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7fd4acee, org.springframework.security.web.context.SecurityContextPersistenceFilter@5cc126dc, org.springframework.security.web.header.HeaderWriterFilter@716a7124, org.springframework.security.web.csrf.CsrfFilter@649725e3, org.springframework.security.web.authentication.logout.LogoutFilter@1a1da881, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72bd06ca, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5dbe30be, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@165b8a71, org.springframework.security.web.session.SessionManagementFilter@226642a5, org.springframework.security.web.access.ExceptionTranslationFilter@6326d182]
+
+2024-04-25 17:54:47,233 INFO Exposing 1 endpoint(s) beneath base path '/actuator'
+
+2024-04-25 17:54:48,029 INFO Tomcat started on port(s): 8848 (http) with context path '/nacos'
+
+2024-04-25 17:54:48,160 INFO Started Nacos in 25.948 seconds (JVM running for 30.363)
+
+2024-04-25 17:54:48,160 INFO Nacos started successfully in stand alone mode. use external storage
+
+2024-04-25 18:04:36,830 WARN clearConfigHistory start
+
+2024-04-25 18:04:36,832 WARN clearConfigHistory, getBeforeStamp:2024-03-26 18:04:36.0, pageSize:1000
+
+2024-04-25 18:04:37,143 INFO [capacityManagement] start correct usage
+
+2024-04-25 18:04:37,149 INFO [capacityManagement] end correct usage, cost: 0.004976135s
+
