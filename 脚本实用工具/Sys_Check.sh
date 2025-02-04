@@ -10,7 +10,7 @@ line="-------------------------------------------------"
 
 [ -d logs ] || mkdir logs
 
-sys_check_file="logs/$(ip a show dev eth0|grep -w inet|awk '{print $2}'|awk -F '/' '{print $1}')-`date +%Y%m%d`.txt"
+sys_check_file="logs/$(ip a show dev eth0|grep -w inet|awk '{print $2}'|awk -F '/' '{print $1}')-$(date +%Y%m%d).txt"
 
 # 获取系统cpu信息
 function get_cpu_info() {
@@ -50,11 +50,11 @@ EOF
 
 # 获取系统网络信息
 function get_net_info() {
-    pri_ipadd=$(ip a show dev eth0|grep -w inet|awk '{print $2}'|awk -F '/' '{print $1}')
+    read gateway pri_ipadd_port < <(ip route | sed '/default/!d;s|default via ||;s| dev||;s| proto.*$||')
+    pri_ipadd=$(ip a show dev "$pri_ipadd_port" | sed '/inet /!d;s|.*inet ||;s|/.*||')
     pub_ipadd=$(curl ifconfig.me -s)
-    gateway=$(ip route | grep default | awk '{print $3}')
-    mac_info=$(ip link| egrep -v "lo"|grep link|awk '{print $2}')
-    dns_config=$(egrep -v "^$|^#" /etc/resolv.conf)
+    mac_info=$(ip link | sed '/lo\|none/d;/link/!d;s| brd.*$||;s| *link/.* ||')
+    dns_config=$(sed '/^$\|^#/d' /etc/resolv.conf)
     route_info=$(route -n)
 cat <<EOF
 IP信息:
@@ -74,9 +74,9 @@ EOF
 
 # 获取系统磁盘信息
 function get_disk_info() {
-    disk_info=$(fdisk -l|grep "Disk /dev"|cut -d, -f1)
-    disk_use=$(df -hTP|awk '$2!="tmpfs"{print}')
-    disk_inode=$(df -hiP|awk '$1!="tmpfs"{print}')
+    disk_info=$(fdisk -l|sed '/Disk \/dev/!d;s|B,.*$|B|')
+    disk_use=$(df -hTP|sed '/ tmpfs/d')
+    disk_inode=$(df -hiP|sed '/^tmpfs/d')
 
 cat <<EOF
 磁盘信息:
@@ -101,8 +101,8 @@ function get_systatus_info() {
     sys_hostname=$(hostname)
     sys_selinux=$(getenforce)
     sys_lang=$(echo $LANG)
-    sys_lastreboot=$(who -b | awk '{print $3,$4}')
-    sys_runtime=$(uptime |awk '{print  $3,$4}'|cut -d, -f1)
+    sys_lastreboot=$(who -b | sed 's|.*  ||')
+    sys_runtime=$(uptime | sed 's|,||2g;s|.*up ||;s|,.*||')
     sys_time=$(date)
     sys_load=$(uptime |cut -d: -f5)
 
@@ -154,11 +154,11 @@ EOF
 
 
 function get_sys_user() {
-    login_user=$(awk -F: '{if ($NF=="/bin/bash") print $0}' /etc/passwd)
-    ssh_config=$(egrep -v "^#|^$" /etc/ssh/sshd_config)
-    sudo_config=$(egrep -v "^#|^$" /etc/sudoers |grep -v "^Defaults")
-    host_config=$(egrep -v "^#|^$" /etc/hosts)
-    crond_config=$(for cronuser in /var/spool/cron/* ;do ls ${cronuser} 2>/dev/null|cut -d/ -f5;egrep -v "^$|^#" ${cronuser} 2>/dev/null;echo "";done)
+    login_user=$(sed '\/bin\/bash/!d' /etc/passwd)
+    ssh_config=$(sed '/^#\|^$/d' /etc/ssh/sshd_config)
+    sudo_config=$(sed '/^#\|^$\|^Defaults/d' /etc/sudoers)
+    host_config=$(sed '/^#\|^$/d' /etc/hosts)
+    crond_config=$(for cronuser in /var/spool/cron/* ;do ls ${cronuser} 2>/dev/null|cut -d/ -f5;sed '/^$\|^#/d' ${cronuser} 2>/dev/null;echo "";done)
 cat <<EOF
 系统登录用户:
 
@@ -185,9 +185,9 @@ EOF
 
 function process_top_info() {
 
-    top_title=$(top -b n1|head -7|tail -1)
-    cpu_top10=$(top b -n1 | head -17 | tail -11)
-    mem_top10=$(top -b n1|head -17|tail -10|sort -k10 -r)
+    top_title=$(top -bn1|head -7|tail -1)
+    cpu_top10=$(top -bn1|head -17|tail -11)
+    mem_top10=$(top -bn1|head -17|tail -10|sort -k10 -r)
 
 cat <<EOF
 CPU占用top10:

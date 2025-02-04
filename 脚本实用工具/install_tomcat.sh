@@ -14,33 +14,26 @@ install_log_path=/var/log/appinstall/
 install_path=/usr/local/
 
 clear
-echo "##########################################"
-echo "#                                        #"
-echo "#      安装 tomcat 6.0/7.0/8.5/9.0       #"
-echo "#                                        #"
-echo "##########################################"
-echo "1: Install tomcat-6.0"
-echo "2: Install tomcat-7.0"
-echo "3: Install tomcat-8.5"
-echo "4: Install tomcat-9.0"
-echo "5: EXIT"
+printf '##########################################
+#                                        #
+#      安装 tomcat 6.0/7.0/8.5/9.0       #
+#                                        #
+##########################################
+1: Install tomcat-6.0
+2: Install tomcat-7.0
+3: Install tomcat-8.5
+4: Install tomcat-9.0
+5: EXIT'
 # 选择安装软件版本
 read -p "Please input your choice:" softversion
-if [ "${softversion}" == "1" ];then
-        URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/tomcat/apache-tomcat-6.0.9.zip"
-elif [ "${softversion}" == "2" ];then
-        URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/tomcat/apache-tomcat-7.0.79.zip"
-elif [ "${softversion}" == "3" ];then
-        URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/tomcat/apache-tomcat-8.5.20.zip"
-elif [ "${softversion}" == "4" ];then
-        URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/tomcat/apache-tomcat-9.0.0.M26.zip"
-elif [ "${softversion}" == "5" ];then
-        echo "you choce channel!"
-        exit 1;
-else
-        echo "input Error! Place input{1|2|3|4|5}"
-        exit 0;
-fi
+case "${softversion}" in
+    1)URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/tomcat/apache-tomcat-6.0.9.zip";;
+    2)URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/tomcat/apache-tomcat-7.0.79.zip";;
+    3)URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/tomcat/apache-tomcat-8.5.20.zip";;
+    4)URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/tomcat/apache-tomcat-9.0.0.M26.zip";;
+    5)echo "you choce channel!"; exit 1;;
+    *)echo "input Error! Place input{1|2|3|4|5}"; exit 0;;
+esac
 
 # 传入内容,格式化内容输出,可以传入多个参数,用空格隔开
 output_msg() {
@@ -55,10 +48,10 @@ check_yum_command() {
         output_msg "命令检查:$1"
         hash $1 >/dev/null 2>&1
         if [ $? -eq 0 ];then
-            echo "`date +%F' '%H:%M:%S` check command $1 ">>${install_log_path}${install_log_name} && return 0
+            echo "$(date +%F' '%H:%M:%S) check command $1 ">>${install_log_path}${install_log_name} && return 0
         else
             yum -y install $2 >/dev/null 2>&1
-        #    hash $Command || { echo "`date +%F' '%H:%M:%S` $2 is installed fail">>${install_log_path}${install_log_name} ; exit 1 }
+        #    hash $Command || { echo "$(date +%F' '%H:%M:%S) $2 is installed fail">>${install_log_path}${install_log_name} ; exit 1 }
         fi
 }
 
@@ -67,7 +60,7 @@ check_dir() {
     output_msg "目录检查"
     for dirname in $*;do
         [ -d $dirname ] || mkdir -p $dirname >/dev/null 2>&1
-        echo "`date +%F' '%H:%M:%S` $dirname check success!" >> ${install_log_path}${install_log_name}
+        echo "$(date +%F' '%H:%M:%S) $dirname check success!" >> ${install_log_path}${install_log_name}
     done
 }
 
@@ -78,9 +71,9 @@ download_file() {
     for file in $*;do
         wget $file -c -P $download_path &> /dev/null
         if [ $? -eq 0 ];then
-           echo "`date +%F' '%H:%M:%S` $file download success!">>${install_log_path}${install_log_name}
+           echo "$(date +%F' '%H:%M:%S) $file download success!">>${install_log_path}${install_log_name}
         else
-           echo "`date +%F' '%H:%M:%s` $file download fail!">>${install_log_path}${install_log_name} && exit 1
+           echo "$(date +%F' '%H:%M:%S) $file download fail!">>${install_log_path}${install_log_name} && exit 1
         fi
     done
 }
@@ -91,11 +84,11 @@ extract_file() {
    output_msg "解压源码"
    for file in $*;do
        if [ "${file##*.}" == "gz" ];then
-           tar -zxf $file -C $install_path && echo "`date +%F' '%H:%M:%S` $file extrac success!,path is $install_path">>${install_log_path}${install_log_name}
+           tar -zxf $file -C $install_path && echo "$(date +%F' '%H:%M:%S) $file extrac success!,path is $install_path">>${install_log_path}${install_log_name}
        elif [ "${file##*.}" == "zip" ];then
-           unzip -q $file -d $install_path && echo "`date +%F' '%H:%M:%S` $file extrac success!,path is $install_path">>${install_log_path}${install_log_name}
+           unzip -q $file -d $install_path && echo "$(date +%F' '%H:%M:%S) $file extrac success!,path is $install_path">>${install_log_path}${install_log_name}
        else
-           echo "`date +%F' '%H:%M:%S` $file type error, extrac fail!">>${install_log_path}${install_log_name} && exit 1
+           echo "$(date +%F' '%H:%M:%S) $file type error, extrac fail!">>${install_log_path}${install_log_name} && exit 1
        fi
     done
 }
@@ -104,7 +97,7 @@ extract_file() {
 config_env() {
     output_msg "环境变量配置"
     echo "export PATH=\$PATH:$1" >${env_file}
-    source ${env_file} && echo "`date +%F' '%H:%M:%S` 软件安装完成!">> ${install_log_path}${install_log_name}
+    source ${env_file} && echo "$(date +%F' '%H:%M:%S) 软件安装完成!">> ${install_log_path}${install_log_name}
 
 }
 
@@ -114,8 +107,8 @@ check_yum_command wget wget
 check_yum_command unzip unzip
 download_file $URL
 
-software_name=$(echo $URL|awk -F'/' '{print $NF}'|awk -F'.zip' '{print $1}')
-for filename in `ls $download_path`;do
+software_name=$(sed 's|.*/||;s|.zip||' <<< "$URL")
+for filename in $(ls $download_path);do
     extract_file ${download_path}$filename
 done
 rm -fr ${download_path}

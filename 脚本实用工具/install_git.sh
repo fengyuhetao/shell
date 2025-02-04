@@ -15,30 +15,24 @@ install_path=/usr/local/
 #software_config_file=${install_path}
 
 clear
-echo "##########################################"
-echo "#                                        #"
-echo "#   安装 git 2.0.0/2.10.0/2.18.0         #"
-echo "#                                        #"
-echo "##########################################"
-echo "1: Install git 2.0.0"
-echo "2: Install git 2.10.0"
-echo "3: Install git 2.18.0"
-echo "4: EXIT"
+printf '##########################################
+#                                        #
+#   安装 git 2.0.0/2.10.0/2.18.0         #
+#                                        #
+##########################################
+1: Install git 2.0.0
+2: Install git 2.10.0
+3: Install git 2.18.0
+4: EXIT'
 # 选择安装软件版本
 read -p "Please input your choice:" softversion
-if [ "${softversion}" == "1" ];then
-        URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/git/git-2.0.0.tar.gz"
-elif [ "${softversion}" == "2" ];then
-        URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/git/git-2.10.0.tar.gz"
-elif [ "${softversion}" == "3" ];then
-        URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/git/git-2.18.0.tar.gz"
-elif [ "${softversion}" == "4" ];then
-        echo "you choce channel!"
-        exit 1;
-else
-        echo "input Error! Place input{1|2|3|4}"
-        exit 0;
-fi
+case "${softversion}" in
+    1)URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/git/git-2.0.0.tar.gz";;
+    2)URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/git/git-2.10.0.tar.gz";;
+    3)URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/git/git-2.18.0.tar.gz";;
+    4)echo "you choce channel!"; exit 1;;
+    *)echo "input Error! Place input{1|2|3|4}"; exit 0;;
+esac
 
 # 传入内容,格式化内容输出,可以传入多个参数,用空格隔开
 output_msg() {
@@ -53,10 +47,10 @@ check_yum_command() {
         output_msg "命令检查:$1"
         hash $1 >/dev/null 2>&1
         if [ $? -eq 0 ];then
-            echo "`date +%F' '%H:%M:%S` check command $1 ">>${install_log_path}${install_log_name} && return 0
+            echo "$(date +%F' '%H:%M:%S) check command $1 ">>${install_log_path}${install_log_name} && return 0
         else
             yum -y install $2 >/dev/null 2>&1
-        #    hash $Command || { echo "`date +%F' '%H:%M:%S` $2 is installed fail">>${install_log_path}${install_log_name} ; exit 1 }
+        #    hash $Command || { echo "$(date +%F' '%H:%M:%S) $2 is installed fail">>${install_log_path}${install_log_name} ; exit 1 }
         fi
 }
 
@@ -65,7 +59,7 @@ yum_install_software() {
 	output_msg "yum 安装软件"
         yum -y install $* >/dev/null 2>${install_log_path}${install_log_name}
         if [ $? -eq 0 ];then
-            echo "`date +%F' '%H:%M:%S`yum install $* 完成" >>${install_log_path}${install_log_name}
+            echo "$(date +%F' '%H:%M:%S)yum install $* 完成" >>${install_log_path}${install_log_name}
         else
 	    exit 1
         fi
@@ -77,7 +71,7 @@ check_dir() {
     output_msg "目录检查"
     for dirname in $*;do
         [ -d $dirname ] || mkdir -p $dirname >/dev/null 2>&1
-        echo "`date +%F' '%H:%M:%S` $dirname check success!" >> ${install_log_path}${install_log_name}
+        echo "$(date +%F' '%H:%M:%S) $dirname check success!" >> ${install_log_path}${install_log_name}
     done
 }
 
@@ -88,9 +82,9 @@ download_file() {
     for file in $*;do
         wget $file -c -P $download_path &> /dev/null
         if [ $? -eq 0 ];then
-           echo "`date +%F' '%H:%M:%S` $file download success!">>${install_log_path}${install_log_name}
+           echo "$(date +%F' '%H:%M:%S) $file download success!">>${install_log_path}${install_log_name}
         else
-           echo "`date +%F' '%H:%M:%s` $file download fail!">>${install_log_path}${install_log_name} && exit 1
+           echo "$(date +%F' '%H:%M:%S) $file download fail!">>${install_log_path}${install_log_name} && exit 1
         fi
     done
 }
@@ -101,11 +95,11 @@ extract_file() {
    output_msg "解压源码"
    for file in $*;do
        if [ "${file##*.}" == "gz" ];then
-           tar -zxf $file -C $install_path && echo "`date +%F' '%H:%M:%S` $file extrac success!,path is $install_path">>${install_log_path}${install_log_name}
+           tar -zxf $file -C $install_path && echo "$(date +%F' '%H:%M:%S) $file extrac success!,path is $install_path">>${install_log_path}${install_log_name}
        elif [ "${file##*.}" == "zip" ];then
-           unzip -q $file -d $install_path && echo "`date +%F' '%H:%M:%S` $file extrac success!,path is $install_path">>${install_log_path}${install_log_name}
+           unzip -q $file -d $install_path && echo "$(date +%F' '%H:%M:%S) $file extrac success!,path is $install_path">>${install_log_path}${install_log_name}
        else
-           echo "`date +%F' '%H:%M:%S` $file type error, extrac fail!">>${install_log_path}${install_log_name} && exit 1
+           echo "$(date +%F' '%H:%M:%S) $file type error, extrac fail!">>${install_log_path}${install_log_name} && exit 1
        fi
     done
 }
@@ -116,9 +110,9 @@ source_install_git() {
     mv ${install_path}${1} ${install_path}tmp${1}
     cd ${install_path}tmp${1} && make prefix=${install_path}git all >/dev/null 2>&1
     if [ $? -eq 0 ];then
-        make prefix=${install_path}git install >/dev/null 2>&1 echo "`date +%F' '%H:%M:%S` git source install success ">>${install_log_path}${install_log_name}
+        make prefix=${install_path}git install >/dev/null 2>&1 echo "$(date +%F' '%H:%M:%S) git source install success ">>${install_log_path}${install_log_name}
     else 
-       echo "`date +%F' '%H:%M:%S` git source install fail!">>${install_log_path}${install_log_name} && exit 1
+       echo "$(date +%F' '%H:%M:%S) git source install fail!">>${install_log_path}${install_log_name} && exit 1
     fi
 }
 
@@ -127,7 +121,7 @@ source_install_git() {
 config_env() {
     output_msg "环境变量配置"
     echo "export PATH=\$PATH:$1" >${env_file}
-    source ${env_file} && echo "`date +%F' '%H:%M:%S` 软件安装完成!">> ${install_log_path}${install_log_name}
+    source ${env_file} && echo "$(date +%F' '%H:%M:%S) 软件安装完成!">> ${install_log_path}${install_log_name}
 
 }
 
@@ -139,13 +133,13 @@ check_yum_command make make
 yum_install_software curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker
 download_file $URL
 
-software_name=$(echo $URL|awk -F'/' '{print $NF}'|awk -F'.tar.gz' '{print $1}')
-for filename in `ls $download_path`;do
+software_name=$(sed 's|.*/||;s|.tar.gz||' <<< "$URL")
+for filename in $(ls $download_path);do
     extract_file ${download_path}$filename
 done
 
 source_install_git ${software_name}
-mv /usr/bin/git /usr/bin/git.bak
+mv /usr/bin/git{,.bak}
 
 rm -fr ${download_path}
 config_env ${install_path}git/bin

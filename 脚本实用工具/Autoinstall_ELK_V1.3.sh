@@ -4,21 +4,21 @@
 #AutoInstall ELK scripts
 #Software:elasticsearch-5.4.1/logstash-5.4.1/filebeat-5.4.1/kibana-5.4.1
 clear
-echo "##########################################"
-echo "#       Auto Install ELK.               ##"
-echo "#       Press Ctrl + C to cancel        ##"
-echo "#       Any key to continue             ##"
-echo "##########################################"
+printf '##########################################
+#       Auto Install ELK.               ##
+#       Press Ctrl + C to cancel        ##
+#       Any key to continue             ##
+##########################################'
 read -p 
 software_dir="/usr/local/software"
 elasticsearch_url="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.1.tar.gz"
 kibana_url="https://artifacts.elastic.co/downloads/kibana/kibana-5.4.1-linux-x86_64.tar.gz"
 logstash_url="https://artifacts.elastic.co/downloads/logstash/logstash-5.4.1.tar.gz"
 filebeat_url="https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.4.1-linux-x86_64.tar.gz"
-sys_version=`cat /etc/redhat-release |awk '{print $4}'|cut -d. -f1`
-IP=`ip addr|grep "inet "|grep -v 127.0.0.1|awk '{print $2}'|cut -d/ -f1`
+sys_version=$(awk '{print $4}' /etc/redhat-release |cut -d. -f1)
+IP=$(ip addr | sed '/inet /!d;/127.0.0.1/d;s|.*inet ||;s|/.*||')
 jvm_conf="/usr/local/elasticsearch/config/jvm.options"
-sys_mem=`free -m|grep Mem:|awk '{print $2}'|awk '{sum+=$1} END {print sum/1024}'|cut -d. -f1`
+sys_mem=$(free -m|awk '/Mem:/ {sum+=$2} END {print sum/1024}'|cut -d. -f1)
 
 #wget software
 wget_fun() {
@@ -61,11 +61,11 @@ useradd elasticsearch
 chown -R elasticsearch:elasticsearch /usr/local/elasticsearch
 echo "vm.max_map_count = 655360" >>/etc/sysctl.conf && sysctl -p
 if [ ${sys_mem} -eq 0 ];then
-	sed -i "s#`grep "^-Xmx" ${jvm_conf}`#"-Xmx512m"#g" ${jvm_conf}
-	sed -i "s#`grep "^-Xms" ${jvm_conf}`#"-Xms512m"#g" ${jvm_conf}
+	sed -i "s#$(grep "^-Xmx" ${jvm_conf})#"-Xmx512m"#g" ${jvm_conf}
+	sed -i "s#$(grep "^-Xms" ${jvm_conf})#"-Xms512m"#g" ${jvm_conf}
 else
-	sed -i "s#`grep "^-Xmx" ${jvm_conf}`#"-Xmx${sys_mem}g"#g" ${jvm_conf}
-	sed -i "s#`grep "^-Xms" ${jvm_conf}`#"-Xms${sys_mem}g"#g" ${jvm_conf}
+	sed -i "s#$(grep "^-Xmx" ${jvm_conf})#"-Xmx${sys_mem}g"#g" ${jvm_conf}
+	sed -i "s#$(grep "^-Xms" ${jvm_conf})#"-Xms${sys_mem}g"#g" ${jvm_conf}
 fi
 cat >>/usr/local/elasticsearch/config/elasticsearch.yml<<EOF
 cluster.name: my-application
@@ -133,8 +133,8 @@ nohup /usr/local/kibana/bin/kibana & >/dev/null
 check() {
 port=$1
 program=$2
-check_port=`netstat -lntup|grep ${port}|wc -l`
-check_program=`ps -ef|grep ${program}|grep -v grep|wc -l`
+check_port=$(netstat -lntup|grep ${port}|wc -l)
+check_program=$(ps -ef|grep ${program}|grep -v grep|wc -l)
 if [ $check_port -gt 0 ] && [ $check_program -gt 0 ];then
         action "${program} run is ok!" /bin/true
 else

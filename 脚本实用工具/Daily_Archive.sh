@@ -5,7 +5,7 @@
 #
 # Gather Current Date
 #
-DATE=`date +%y%m%d`
+DATE=$(date +%y%m%d)
 #
 # Set Archive File Name
 #

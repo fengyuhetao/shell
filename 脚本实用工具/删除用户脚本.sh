@@ -213,7 +213,7 @@ echo " 2) Change the files' ownership to a current user account."
 echo
 echo "Please wait. This may take a while..."
 #
-REPORT_DATE=`date +%y%m%d`
+REPORT_DATE=$(date +%y%m%d)
 REPORT_FILE=$USER_ACCOUNT"_Files_"$REPORT_DATE".rpt"
 #
 find / -user $USER_ACCOUNT > $REPORT_FILE 2>/dev/null
@@ -221,7 +221,7 @@ find / -user $USER_ACCOUNT > $REPORT_FILE 2>/dev/null
 echo
 echo "Report is complete."
 echo "Name of report:	$REPORT_FILE"
-echo "Location of report:     `pwd`"
+echo "Location of report:     $(pwd)"
 echo
 ################################################################
 #

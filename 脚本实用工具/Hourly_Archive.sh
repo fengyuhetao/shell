@@ -9,9 +9,9 @@ CONFIG_FILE=/home/tiandi/archive/Files_To_Backup
 #
 # Gather Current Date,Month & Time
 #
-DAY=`date +%d`
-MONTH=`date +%m`
-TIME=`date +%k%M`
+DAY=$(date +%d)
+MONTH=$(date +%m)
+TIME=$(date +%k%M)
 #
 # Set Base Archive Destination Location
 #

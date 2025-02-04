@@ -14,34 +14,28 @@ install_path=/usr/local/
 software_config_file=${install_path}elasticsearch/config/elasticsearch.yml
 sysversion=$(rpm -q centos-release|cut -d- -f3)
 jvm_conf="/usr/local/elasticsearch/config/jvm.options"
-sys_mem=`free -m|grep Mem:|awk '{print $2}'|awk '{sum+=$1} END {print sum/1024}'|cut -d. -f1`
+sys_mem=$(free -m|awk '/Mem:/ {sum+=$2} END {print sum/1024}'|cut -d. -f1)
 hostname=elk-server
 
 clear
-echo "##########################################"
-echo "#                                        #"
-echo "# 安装 elasticsearch 5.4.1/6.0.1/6.3.1   #"
-echo "#                                        #"
-echo "##########################################"
-echo "1: Install elasticsearch 5.4.1"
-echo "2: Install elasticsearch 6.0.1"
-echo "3: Install elasticsearch 6.3.1"
-echo "4: EXIT"
+printf '##########################################
+#                                        #
+# 安装 elasticsearch 5.4.1/6.0.1/6.3.1   #
+#                                        #
+##########################################
+1: Install elasticsearch 5.4.1
+2: Install elasticsearch 6.0.1
+3: Install elasticsearch 6.3.1
+4: EXIT\n'
 # 选择安装软件版本
 read -p "Please input your choice:" softversion
-if [ "${softversion}" == "1" ];then
-        URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/elasticsearch/elasticsearch-5.4.1.tar.gz"
-elif [ "${softversion}" == "2" ];then
-        URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/elasticsearch/elasticsearch-6.0.1.tar.gz"
-elif [ "${softversion}" == "3" ];then
-        URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/elasticsearch/elasticsearch-6.3.1.tar.gz"
-elif [ "${softversion}" == "4" ];then
-        echo "you choce channel!"
-        exit 1;
-else
-        echo "input Error! Place input{1|2|3|4|5}"
-        exit 0;
-fi
+case "${softversion}" in
+    1)URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/elasticsearch/elasticsearch-5.4.1.tar.gz";;
+    2)URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/elasticsearch/elasticsearch-6.0.1.tar.gz";;
+    3)URL="https://anchnet-script.oss-cn-shanghai.aliyuncs.com/elasticsearch/elasticsearch-6.3.1.tar.gz";;
+    4)echo "you choce channel!"; exit 1;;
+    *)echo "input Error! Place input{1|2|3|4}"; exit 0;;
+esac
 
 # 传入内容,格式化内容输出,可以传入多个参数,用空格隔开
 output_msg() {
@@ -56,10 +50,10 @@ check_yum_command() {
         output_msg "命令检查:$1"
         hash $1 >/dev/null 2>&1
         if [ $? -eq 0 ];then
-            echo "`date +%F' '%H:%M:%S` check command $1 ">>${install_log_path}${install_log_name} && return 0
+            echo "$(date +%F' '%H:%M:%S) check command $1 ">>${install_log_path}${install_log_name} && return 0
         else
             yum -y install $2 >/dev/null 2>&1
-        #    hash $Command || { echo "`date +%F' '%H:%M:%S` $2 is installed fail">>${install_log_path}${install_log_name} ; exit 1 }
+        #    hash $Command || { echo "$(date +%F' '%H:%M:%S) $2 is installed fail">>${install_log_path}${install_log_name} ; exit 1 }
         fi
 }
 
@@ -68,7 +62,7 @@ check_dir() {
     output_msg "目录检查"
     for dirname in $*;do
         [ -d $dirname ] || mkdir -p $dirname >/dev/null 2>&1
-        echo "`date +%F' '%H:%M:%S` $dirname check success!" >> ${install_log_path}${install_log_name}
+        echo "$(date +%F' '%H:%M:%S) $dirname check success!" >> ${install_log_path}${install_log_name}
     done
 }
 
@@ -79,9 +73,9 @@ download_file() {
     for file in $*;do
         wget $file -c -P $download_path &> /dev/null
         if [ $? -eq 0 ];then
-           echo "`date +%F' '%H:%M:%S` $file download success!">>${install_log_path}${install_log_name}
+           echo "$(date +%F' '%H:%M:%S) $file download success!">>${install_log_path}${install_log_name}
         else
-           echo "`date +%F' '%H:%M:%s` $file download fail!">>${install_log_path}${install_log_name} && exit 1
+           echo "$(date +%F' '%H:%M:%s) $file download fail!">>${install_log_path}${install_log_name} && exit 1
         fi
     done
 }
@@ -92,11 +86,11 @@ extract_file() {
    output_msg "解压源码"
    for file in $*;do
        if [ "${file##*.}" == "gz" ];then
-           tar -zxf $file -C $install_path && echo "`date +%F' '%H:%M:%S` $file extrac success!,path is $install_path">>${install_log_path}${install_log_name}
+           tar -zxf $file -C $install_path && echo "$(date +%F' '%H:%M:%S) $file extrac success!,path is $install_path">>${install_log_path}${install_log_name}
        elif [ "${file##*.}" == "zip" ];then
-           unzip -q $file -d $install_path && echo "`date +%F' '%H:%M:%S` $file extrac success!,path is $install_path">>${install_log_path}${install_log_name}
+           unzip -q $file -d $install_path && echo "$(date +%F' '%H:%M:%S) $file extrac success!,path is $install_path">>${install_log_path}${install_log_name}
        else
-           echo "`date +%F' '%H:%M:%S` $file type error, extrac fail!">>${install_log_path}${install_log_name} && exit 1
+           echo "$(date +%F' '%H:%M:%S) $file type error, extrac fail!">>${install_log_path}${install_log_name} && exit 1
        fi
     done
 }
@@ -106,19 +100,17 @@ config_env() {
     output_msg "环境变量配置"
     
     echo "export PATH=\$PATH:$1" >${env_file}
-    source ${env_file} && echo "`date +%F' '%H:%M:%S` 软件安装完成!">> ${install_log_path}${install_log_name}
+    source ${env_file} && echo "$(date +%F' '%H:%M:%S) 软件安装完成!">> ${install_log_path}${install_log_name}
 
 }
 
 # 配置主机名，第一个为主机名
 config_hostname() {
-if [ ${sysversion} -eq 6 ];then
-   hostname $1
-elif [ ${sysversion} -eq 7 ];then
-   hostnamectl set-hostname $1
-else
-   echo "`date +%F' '%H:%M:%S` hostname $1 config fail">> ${install_log_path}${install_log_name}
-fi
+    case ${sysversion} in
+        6)hostname $1;;
+        7)hostnamectl set-hostname $1
+        *)echo "$(date +%F' '%H:%M:%S) hostname $1 config fail">> ${install_log_path}${install_log_name}
+    esac
 }
 
 config_limits() {
@@ -150,20 +142,20 @@ EOF
 config_user() {
 useradd $1 >/dev/null 2>&1 
 if [ $? -eq 0 ];then
-    echo "`date +%F' '%H:%M:%S` $1 user add success">> ${install_log_path}${install_log_name}
+    echo "$(date +%F' '%H:%M:%S) $1 user add success">> ${install_log_path}${install_log_name}
 else 
-    echo "`date +%F' '%H:%M:%S` $1 user add fail">> ${install_log_path}${install_log_name} && exit 1
+    echo "$(date +%F' '%H:%M:%S) $1 user add fail">> ${install_log_path}${install_log_name} && exit 1
 fi
 chown ${1}.${1} ${install_path}elasticsearch/ -R
 }
 
 config_jvm() {
 if [ ${sys_mem} -eq 0 ];then
-    sed -i "s#`grep "^-Xmx" ${jvm_conf}`#"-Xmx512m"#g" ${jvm_conf}
-    sed -i "s#`grep "^-Xms" ${jvm_conf}`#"-Xms512m"#g" ${jvm_conf}
+    sed -i "s#$(grep "^-Xmx" ${jvm_conf})#"-Xmx512m"#g" ${jvm_conf}
+    sed -i "s#$(grep "^-Xms" ${jvm_conf})#"-Xms512m"#g" ${jvm_conf}
 else
-    sed -i "s#`grep "^-Xmx" ${jvm_conf}`#"-Xmx${sys_mem}g"#g" ${jvm_conf}
-    sed -i "s#`grep "^-Xms" ${jvm_conf}`#"-Xms${sys_mem}g"#g" ${jvm_conf}
+    sed -i "s#$(grep "^-Xmx" ${jvm_conf})#"-Xmx${sys_mem}g"#g" ${jvm_conf}
+    sed -i "s#$(grep "^-Xms" ${jvm_conf})#"-Xms${sys_mem}g"#g" ${jvm_conf}
 fi
 }
 
@@ -174,8 +166,8 @@ check_yum_command wget wget
 download_file $URL
 config_hostname $hostname
 
-software_name=$(echo $URL|awk -F'/' '{print $NF}'|awk -F'.tar.gz' '{print $1}')
-for filename in `ls $download_path`;do
+software_name=$(sed 's|.*/||;s|.tar.gz||' <<< "$URL")
+for filename in $(ls $download_path);do
     extract_file ${download_path}$filename
 done
 

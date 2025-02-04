@@ -4,7 +4,7 @@
 #############################################################
 #Parameters for script
 #
-CHECK_DIRECTORIES="/var/log /home" #directories to check
+CHECK_DIRECTORIES=("/var/log" "/home") #directories to check
 #
 ######################### Main Script #######################
 #
@@ -15,7 +15,7 @@ exec > disk_space_$DATE.rpt         #Make report file Std Output
 echo "Top Ten Disk Space Usage"     #Report header for while report
 echo "for $CHECK_DIRECTORIES Directories"
 #
-for DIR_CHECK in $CHECK_DIRECTORIES       #loop to du directories
+for DIR_CHECK in "${CHECK_DIRECTORIES[@]}"       #loop to du directories
 do
 	echo ""
 	echo "The $DIR_CHECK Directory:"	#Title header for each directory
